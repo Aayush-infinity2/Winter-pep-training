@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aayush Portfolio</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: white;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    margin-left: 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+#login_link, #signup_link {
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+/* ---------- PROFILE DROPDOWN ---------- */
+.profile {
+    position: relative;
+    margin-left: 18px;
+}
+
+.profile-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid white;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    z-index: 20;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.dropdown a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-card {
+    max-width: 520px;
+    padding: 40px;
+    border-radius: 22px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-card h1 {
+    margin: 0 0 15px;
+    font-weight: 600;
+}
+
+.hero-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #e5e5e5;
+}
+
+.section {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.section-card {
+    width: 100%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Aayush</div>
+
+    <div class="nav-links">
+        <a href="{% url 'main' %}">Home</a>
+        <a href="#">Features</a>
+        <a href="#">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+
+
+        {% if request.session.username %}
+            <div class="profile">
+                <button type="button" class="profile-btn">
+                    Logged in • {{ request.session.username }}
+                </button>
+                <div class="dropdown">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'login' %}" id="login_link">Login</a>
+            <a href="{% url 'signup' %}" id="signup_link">Sign Up</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-card">
+        <h1>Hello Everyone!</h1>
+        <p>
+            I am Aayush, a passionate web developer who loves building clean,
+            modern and scalable web applications using Django.
+        </p>
+        <a href="{% url 'signup' %}" class="btn">Get Started</a>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+    <div class="section-card">
+        <h2 style="text-align:center;">Skills</h2>
+        <div class="cards">
+            <div class="card">HTML & CSS</div>
+            <div class="card">JavaScript</div>
+            <div class="card">Django</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 Built by Aayush ❤️
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const profileBtn = document.querySelector(".profile-btn");
+    const dropdown = document.querySelector(".dropdown");
+
+    if (profileBtn) {
+        profileBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            dropdown.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function () {
+            dropdown.classList.remove("show");
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>

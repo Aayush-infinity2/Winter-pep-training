@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        }
+
+        .container {
+            width: 420px;
+            padding: 28px;
+            border-radius: 18px;
+
+            /* Glassmorphism */
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* USER LIST */
+        .user-list {
+            max-height: 260px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .user-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .user-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+        }
+
+        .user-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            border-left: 3px solid #ffffff;
+            transition: 0.3s;
+        }
+
+        li:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .empty {
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Users</h1>
+
+    <div class="user-list">
+        <ul>
+            {% for x in my_users %}
+                <li>
+                    {{ x.first_name }} {{ x.last_name }}<br>
+                    <small style="opacity:0.8;">{{ x.email }}</small>
+                </li>
+            {% empty %}
+                <li class="empty">No users found</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

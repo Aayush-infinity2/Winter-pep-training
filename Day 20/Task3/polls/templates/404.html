@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>404</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        }
+
+        .error-container {
+            width: 420px;
+            padding: 35px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 90px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .error-title {
+            font-size: 22px;
+            margin: 10px 0 15px;
+            font-weight: 500;
+        }
+
+        .error-message {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 10px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-message">
+        Sorry, the page you’re looking for doesn’t exist or has been moved.
+    </p>
+
+    <a href="/" class="btn">Go to Home</a>
+</div> 
+
+</body>
+</html>
